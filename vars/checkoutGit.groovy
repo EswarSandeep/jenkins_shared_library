@@ -1,10 +1,7 @@
-def call(String gitUrl, String gitBranch){
-checkout([
-    $class: 'scmGit'
-    branches = [
-        [name: 'gitBranch']
-        ],
-    extensions = [],
-    userRemoteConfigs = [[url: 'gitUrl']]
+def call(String gitUrl, String gitBranch) {
+    checkout([
+        $class: 'GitSCM',
+        branches: [[name: gitBranch]],
+        userRemoteConfigs: [[url: gitUrl]]
     ])
 }
